@@ -2,25 +2,21 @@ import csv
 import requests # requests pip install 필요
 from bs4 import BeautifulSoup   # BeautifulSoup pip install 필요
 import lxml # lxml pip install 필요
+import search_NaverShop
+import search_Merukari
+import load_excell
 
-# User-Agent 설정
-headers = {"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36"}
+# **** 엑셀에서 데이터 가져오기 -ok
+merukari_itemList = []
+naver_itemList = []
 
-# url 설정
-url = "http://vip.mk.co.kr/newSt/rate/cost_up.php"  # 네이버 주식 사이트 아님(거래대금 상위를 얻기위해 바꿈)
+merukari_itemList = load_excell.load_excell_merukari()
+naver_itemList = load_excell.load_excell_naver()
 
-res = requests.get(url, headers=headers)
-res.raise_for_status()
-soup = BeautifulSoup(res.content, "lxml")
+print(merukari_itemList)
+print(naver_itemList)
 
-
-def trading_top20():
-    # 원하는 부분 데이터 가져오기
-    data_rows = soup.find("table", attrs={"class": "table_5"}).find_all("a")
-    stock_name = []
-    for row in data_rows:
-        stock_name.append(row.get_text())   # 발견한 요소를 하나씩 텍스트 부분만 골라넣기
-        if len(stock_name) > 19:    # 상위 20개만 받음
-            break
-    return stock_name
+# **** 네이버 쇼핑에서 정보 가져오기 - ing
+# 아이템 이름으로 검색 실시
+search_NaverShop.search_item(naver_itemList[0])
 
