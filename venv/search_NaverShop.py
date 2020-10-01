@@ -2,7 +2,9 @@ from selenium import webdriver
 import time
 import load_excell
 
-browser = webdriver.Chrome("C:/selenium/chromedriver")
+options = webdriver.ChromeOptions()
+options.headless = True
+browser = webdriver.Chrome("C:/selenium/chromedriver", options = options)
 
 browser.get("https://shopping.naver.com/")  # 네이버 쇼핑
 
@@ -72,9 +74,9 @@ def search_item(item_name, num_item):
 
         price_shipping3.append(value)
     # print(price)
-    # print(len(price))
+    print("가격 리스트 갯수: " + str(len(price)))
     # print(price_shipping3)
-    # print(len(price_shipping3))
+    print("배송비 리스트 갯수: " + str(len(price_shipping3)))
 
     ### 위에서 얻은 자료를 토대로 계산
     # 상품 비용과 배송비를 더함
@@ -88,11 +90,11 @@ def search_item(item_name, num_item):
     total_price_max = max(total_price)
     total_price_min = min(total_price)
 
-    print("평균가: " + str(total_price_avg))
-    print("최대가: " + str(total_price_max))
-    print("최소가: " + str(total_price_min))
+    # print("평균가: " + str(total_price_avg))
+    # print("최대가: " + str(total_price_max))
+    # print("최소가: " + str(total_price_min))
     
-    # 지금까지 얻은 값 엑셀에 출력(최저, 최고, 평균순)
+    ### 지금까지 얻은 값 엑셀에 출력(최저, 최고, 평균순)
     # num_item은 엑셀에 기록할 때 시작 행을 결정
     # 번호는 엑셀 기록할 때 시작 열을 의미
     load_excell.writeTo_excell("Naver", num_item, 3, total_price_min)
