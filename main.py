@@ -17,6 +17,9 @@ print(merukari_itemList)
 print(naver_itemList)
 
 # **** 네이버 쇼핑에서 정보 가져오기 - ing
-# 아이템 이름으로 검색 실시
-search_NaverShop.search_item(naver_itemList[0])
+naver_priceList = []
+# 아이템 이름으로 검색 실시(항목 갯수도 같이 넘김)
+naver_priceList = search_NaverShop.search_item(naver_itemList[0], 0)
+
+# search_Merukari.search_item(merukari_itemList[0])
 

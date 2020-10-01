@@ -1,9 +1,10 @@
 from openpyxl import load_workbook
+import openpyxl
 
 # 불러올 엑셀 파일 설정
 # data_only=True : 수식없이 값만 가져오게 설정
 # 내가 저장한 AI_List 들고오기
-load_wb = load_workbook("C:/Users/ijiu/Desktop/work/Git/buyAndsSell/venv/buyAndSell.xlsx", data_only=True)
+load_wb = load_workbook("C:/Users/ijiu/Desktop/work/Git/buyAndsSell/venv/buyAndSell.xlsx", data_only=False)
 
 # 메루카리 시트 먼저 불러오기
 def load_excell_merukari():
@@ -39,4 +40,11 @@ def load_excell_naver():
 
     return naver_itemList
 
-# def write_excell():
+def writeTo_excell(sheet_name, num_item, column_num, value):
+    # 불러올 시트 설정
+    load_sheet = load_wb.get_sheet_by_name(sheet_name)
+    load_sheet.cell(row = num_item + 6, column = column_num).value = value
+    load_wb.save("C:/Users/ijiu/Desktop/work/Git/buyAndsSell/venv/buyAndSell.xlsx")
+
+
+
