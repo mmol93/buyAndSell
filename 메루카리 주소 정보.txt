@@ -1,0 +1,17 @@
+메루카리 메인
+https://www.mercari.com/jp/
+
+메루카리 검색(그냥 품명) : keyword에 추가됨
+https://www.mercari.com/jp/search/?keyword=samsung
+
+메루카리 조건(신품,미사용) : item_condition_id에 뭔가 붙음
+https://www.mercari.com/jp/search/?sort_order=&keyword=samsung&category_root=&brand_name=&brand_id=&size_group=&price_min=&price_max=&item_condition_id%5B1%5D=1
+
+메루카리 조건(신품 + 미사용가까움) : item_condition_id가 더 추가됨
+https://www.mercari.com/jp/search/?sort_order=&keyword=samsung&category_root=&brand_name=&brand_id=&size_group=&price_min=&price_max=&item_condition_id%5B1%5D=1&item_condition_id%5B2%5D=1
+
+메쿠라기 조건(최소:1000 / 최대:15000) : price_min과 price_max 부분이 추가됨
+https://www.mercari.com/jp/search/?sort_order=&keyword=samsung&category_root=&brand_name=&brand_id=&size_group=&price_min=1000&price_max=15000&item_condition_id%5B1%5D=1&item_condition_id%5B2%5D=1
+
+메루카리 조건(판매중) : status_on_sale 부분 추가
+https://www.mercari.com/jp/search/?sort_order=&keyword=samsung&category_root=&brand_name=&brand_id=&size_group=&price_min=1000&price_max=15000&item_condition_id%5B1%5D=1&item_condition_id%5B2%5D=1&status_on_sale=1
